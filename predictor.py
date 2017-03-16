@@ -47,7 +47,10 @@ def make_predictions(data, file_name):
 		except:
 			print(seeds)
 			print(historic_results[seeds[0]])
-		winner = choice(seeds, 1, p=[chance_favorite, 1-chance_favorite])
+		if 'UCONN' in teams:
+			winner = '1'
+		else:
+			winner = choice(seeds, 1, p=[chance_favorite, 1-chance_favorite])
 		write_file.write('{} {}\n'.format(winner[0], game[winner[0]]))
 		if n % 2 == 0:
 			write_file.write('\n')
